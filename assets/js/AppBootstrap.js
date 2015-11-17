@@ -3,6 +3,6 @@ import ReactDOM from 'react-dom';
 import CommentBox from './components/CommentComponents';
 
 ReactDOM.render(
-  <CommentBox url="/api/comments.json" pollInterval={2000} />,
+  <CommentBox />,
   document.getElementById('app')
 );

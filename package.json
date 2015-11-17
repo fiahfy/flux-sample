@@ -16,9 +16,11 @@
     "babelify": "^7.2.0",
     "events": "^1.1.0",
     "flux": "^2.1.1",
+    "history": "^1.12.0",
     "keymirror": "^0.1.1",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
+    "react-router": "^1.0.0",
     "watchify": "^3.6.1"
   },
   "browserify": {

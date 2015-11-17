@@ -1,10 +1,10 @@
-import AppDispatcher from '../dispatchers/AppDispatcher';
-import AppConstants from '../constants/AppConstants';
+import AppDispatcher from '../AppDispatcher';
+import AppConstants from '../AppConstants';
 
 export default class CommentAction {
-  add(author, text) {
+  static add(author, text) {
     AppDispatcher.dispatch({
-      actionType: AppConstants.ADD,
+      actionType: AppConstants.ACTION_TYPE.ADD,
       author: author,
       text: text
     });

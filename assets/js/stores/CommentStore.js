@@ -1,33 +1,29 @@
 import {EventEmitter} from 'events';
-import AppDispatcher from '../dispatchers/AppDispatcher';
-import AppConstants from '../constants/AppConstants';
+import AppDispatcher from '../AppDispatcher';
+import AppConstants from '../AppConstants';
 
-export default class CommentStore extends EventEmitter {
-  static comments = [];
+export default new (class CommentStore extends EventEmitter {
+  comments = [];
   constructor() {
     super();
-  }
-  static getComments() {
-    return CommentStore.comments;
-  }
-  static emitChange() {
-    this.emit(CHANGE_EVENT);
-  }
-}
 
-AppDispatcher.register((action) => {
-  switch (action.actionType) {
-    case AppConstants.ADD:
-      add(action);
-      CommentStore.emitChange();
-      break;
+    AppDispatcher.register((action) => {
+      switch (action.actionType) {
+        case AppConstants.ACTION_TYPE.ADD:
+          this._add(action);
+          break;
+      }
+      this.emit(AppConstants.STORE_EVENT.CHANGE);
+    });
   }
-});
-
-function add(action) {
-  CommentStore.comments.push({
-    id: Date.now(),
-    author: action.author,
-    text: action.text
-  });
-}
+  _add(action) {
+    this.comments.push({
+      id: Date.now(),
+      author: action.author,
+      text: action.text
+    });
+  }
+  getComments() {
+    return this.comments;
+  }
+})();

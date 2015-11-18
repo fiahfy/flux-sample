@@ -2,9 +2,9 @@ import AppConstants from '../AppConstants';
 import AppDispatcher from '../AppDispatcher';
 
 export default class CommentAction {
-  static add(author, text) {
+  static create(author, text) {
     AppDispatcher.dispatch({
-      actionType: AppConstants.ActionTypes.ADD,
+      actionType: AppConstants.ActionTypes.CREATE,
       author: author,
       text: text
     });

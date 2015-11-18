@@ -9,7 +9,7 @@ export default class CommentBox extends React.Component {
     this._onChange = this._onChange.bind(this);
   }
   _onSubmit(comment) {
-    CommentAction.add(comment.author, comment.text);
+    CommentAction.create(comment.author, comment.text);
     //this.setState({data: CommentStore.getComments()});
   }
   _onChange() {

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "watchify -o assets/js/bundle.js -v -d assets/js/AppBootstrap.js",
+    "start": "supervisor server.js",
+    "watch": "watchify -o assets/js/bundle.js -v -d assets/js/AppBootstrap.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -18,9 +19,13 @@
     "flux": "^2.1.1",
     "history": "^1.12.0",
     "keymirror": "^0.1.1",
+    "koa": "^1.1.2",
+    "koa-send": "^3.1.0",
+    "koa-static": "^1.5.2",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
     "react-router": "^1.0.0",
+    "supervisor": "^0.9.1",
     "watchify": "^3.6.1"
   },
   "browserify": {

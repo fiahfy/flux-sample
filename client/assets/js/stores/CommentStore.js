@@ -11,7 +11,7 @@ export default new (class CommentStore extends EventEmitter {
 
     AppDispatcher.register((action) => {
       switch (action.actionType) {
-        case AppConstants.ActionTypes.ADD:
+        case AppConstants.ActionTypes.CREATE:
           this._add(action);
           break;
       }

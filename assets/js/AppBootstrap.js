@@ -40,14 +40,15 @@ class NotFound extends React.Component {
 }
 
 let history = createBrowserHistory()
+let routes = (
+  <Route path="/" component={App}>
+    <IndexRoute component={Home} />
+    <Route path="comments/" component={CommentBox} />
+    <Route path="*" component={NotFound} />
+  </Route>
+);
 
-ReactDOM.render((
-  <Router history={history}>
-    <Route path="/" component={App}>
-      <IndexRoute component={Home} />
-      <Route path="comments/" component={CommentBox} />
-      <Route path="*" component={NotFound} />
-    </Route>
-  </Router>),
+ReactDOM.render(
+  <Router routes={routes} history={history} />,
   document.querySelector('#app')
 );

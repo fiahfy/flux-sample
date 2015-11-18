@@ -1,10 +1,7 @@
 import keyMirror from 'keymirror';
 
 export default {
-  ACTION_TYPE: keyMirror({
+  ActionTypes: keyMirror({
     ADD: null
-  }),
-  STORE_EVENT: keyMirror({
-    CHANGE: null
   })
 };

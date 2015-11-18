@@ -1,6 +1,8 @@
 import {EventEmitter} from 'events';
-import AppDispatcher from '../AppDispatcher';
 import AppConstants from '../AppConstants';
+import AppDispatcher from '../AppDispatcher';
+
+const CHANGE_EVENT = 'change';
 
 export default new (class CommentStore extends EventEmitter {
   comments = [];
@@ -9,11 +11,11 @@ export default new (class CommentStore extends EventEmitter {
 
     AppDispatcher.register((action) => {
       switch (action.actionType) {
-        case AppConstants.ACTION_TYPE.ADD:
+        case AppConstants.ActionTypes.ADD:
           this._add(action);
           break;
       }
-      this.emit(AppConstants.STORE_EVENT.CHANGE);
+      this.emit(CHANGE_EVENT);
     });
   }
   _add(action) {
@@ -23,7 +25,13 @@ export default new (class CommentStore extends EventEmitter {
       text: action.text
     });
   }
-  getComments() {
+  getAll() {
     return this.comments;
+  }
+  addChangeListener(callback) {
+    this.on(CHANGE_EVENT, callback);
+  }
+  removeChangeListener(callback) {
+    this.removeListener(CHANGE_EVENT, callback);
   }
 })();

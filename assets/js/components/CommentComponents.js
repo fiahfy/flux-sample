@@ -1,10 +1,9 @@
 import React from 'react';
 import CommentStore from '../stores/CommentStore';
 import CommentAction from '../actions/CommentAction';
-import AppConstants from '../AppConstants';
 
 export default class CommentBox extends React.Component {
-  state = {data: CommentStore.getComments()};
+  state = {data: CommentStore.getAll()};
   constructor(props) {
     super(props);
     this._onChange = this._onChange.bind(this);
@@ -14,13 +13,13 @@ export default class CommentBox extends React.Component {
     //this.setState({data: CommentStore.getComments()});
   }
   _onChange() {
-    this.setState({data: CommentStore.getComments()});
+    this.setState({data: CommentStore.getAll()});
   }
   componentDidMount() {
-    CommentStore.on(AppConstants.STORE_EVENT.CHANGE, this._onChange);
+    CommentStore.addChangeListener(this._onChange);
   }
   componentWillUnmount() {
-    CommentStore.removeListener(AppConstants.STORE_EVENT.CHANGE, this._onChange);
+    CommentStore.removeChangeListener(this._onChange);
   }
   render() {
     return (

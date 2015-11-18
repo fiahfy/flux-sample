@@ -17,9 +17,6 @@ export default new (class CommentStore extends EventEmitter {
         case AppConstants.ActionTypes.LOADED:
           this._loaded(action);
           break;
-        // case AppConstants.ActionTypes.CREATED:
-        //   this._load(action);
-        //   break;
       }
       this.emit(CHANGE_EVENT);
     });

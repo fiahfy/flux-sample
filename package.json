@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "supervisor server.js",
-    "watch": "watchify -o assets/js/bundle.js -v -d assets/js/AppBootstrap.js",
+    "watch": "watchify -o client/assets/js/bundle.js -v -d client/assets/js/AppBootstrap.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

@@ -3,7 +3,7 @@ import CommentStore from '../stores/CommentStore';
 import CommentAction from '../actions/CommentAction';
 
 export default class CommentBox extends React.Component {
-  state = {data: CommentStore.getAll()};
+  state = {data: []};
   constructor(props) {
     super(props);
     this._onChange = this._onChange.bind(this);
@@ -17,6 +17,7 @@ export default class CommentBox extends React.Component {
   }
   componentDidMount() {
     CommentStore.addChangeListener(this._onChange);
+    CommentAction.load();
   }
   componentWillUnmount() {
     CommentStore.removeChangeListener(this._onChange);

@@ -14,6 +14,12 @@ export default new (class CommentStore extends EventEmitter {
         case AppConstants.ActionTypes.CREATE:
           this._add(action);
           break;
+        case AppConstants.ActionTypes.LOADED:
+          this._loaded(action);
+          break;
+        // case AppConstants.ActionTypes.CREATED:
+        //   this._load(action);
+        //   break;
       }
       this.emit(CHANGE_EVENT);
     });
@@ -24,6 +30,9 @@ export default new (class CommentStore extends EventEmitter {
       author: action.author,
       text: action.text
     });
+  }
+  _loaded(action) {
+    this.comments = action.comments;
   }
   getAll() {
     return this.comments;
